@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:old_wave/Pages/container%20pages/page_one.dart';
+import 'package:old_wave/Pages/container%20pages/page_three.dart';
+import 'package:old_wave/Pages/container%20pages/page_two.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -10,21 +13,8 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: PageView(
-      children: [
-        Container(
-          color: Colors.red,
-          child: Center(child: Text('Page 1')),
-        ),
-        Container(
-          color: Colors.green,
-          child: Center(child: Text('Page 2')),
-        ),
-        Container(
-          color: Colors.blue,
-          child: Center(child: Text('Page 3')),
-        ),
-      ],
-    ));
+    return Scaffold(
+      body: PageView(children: [PageThree(), PageTwo(), PageOne()]),
+    );
   }
 }
