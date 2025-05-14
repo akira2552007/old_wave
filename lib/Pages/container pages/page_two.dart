@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PageTwo extends StatelessWidget {
-  const PageTwo({super.key});
+  const PageTwo({super.key, required this.controller});
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,11 @@ class PageTwo extends StatelessWidget {
           
             child: Text(
               'IN CAOSE,',
-              style: GoogleFonts.ibmPlexSans(
+              style: TextStyle(
                 fontSize: 65,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
-              ),
+                fontFamily: 'Nothing_Font',)
             ),
           ),
           Positioned(
@@ -36,25 +36,36 @@ class PageTwo extends StatelessWidget {
             left: 20,
             child: Text(
               'A SINGLE NOTE,',
-              style: GoogleFonts.ibmPlexSans(
-                fontSize: 40,
+              style: TextStyle(
+                fontSize: 45,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
-              ),
+                fontFamily: 'Nothing_Font',)
             ),
           ),
           Positioned(
-            top: 260,
+            top: 250,
             left: 20,
             child: Text(
               'CAN BRING PEACE',
-              style: GoogleFonts.ibmPlexSans(
-                fontSize: 30  ,
-                
+              style:TextStyle(
+                fontSize: 40,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
-                
-              ),
+                fontFamily: 'Nothing_Font',)
+            ),
+          ),
+          Positioned(
+            bottom: 50,
+            right: 20,
+            child: ElevatedButton(
+              onPressed: () {
+                controller.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+              },
+              child: Text('   Next  '),
             ),
           ),
         ],

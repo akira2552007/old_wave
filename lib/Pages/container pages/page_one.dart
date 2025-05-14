@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PageOne extends StatelessWidget {
-  const PageOne({super.key});
+  const PageOne({super.key, required this.controller});
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF5DEB3),
+      backgroundColor: Color(0xffd8d7fa),
       body: Stack(
         children: [
           Positioned(
-            top: 420,
-            left: 10,
+            top: 490,
+            right: 70,
 
             child: Column(
-              children: [Image.asset('assets/three.png', height: 500)],
+              children: [Image.asset('assets/one.png', height: 500)],
             ),
           ),
           Positioned(
             top: 100,
             left: 20,
-          
+
             child: Text(
               'TO PAUSE,',
-              style: GoogleFonts.ibmPlexSans(
+              style: TextStyle(
                 fontSize: 65,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
+                fontFamily: 'Nothing_Font',
               ),
             ),
           ),
@@ -36,10 +37,11 @@ class PageOne extends StatelessWidget {
             left: 20,
             child: Text(
               'TO LISTEN,',
-              style: GoogleFonts.ibmPlexSans(
-                fontSize: 55,
+              style: TextStyle(
+                fontSize: 65,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
+                fontFamily: 'Nothing_Font',
               ),
             ),
           ),
@@ -48,13 +50,25 @@ class PageOne extends StatelessWidget {
             left: 20,
             child: Text(
               'TO BEGIN AGAIN,',
-              style: GoogleFonts.ibmPlexSans(
-                fontSize: 35,
-                
+              style: TextStyle(
+                fontSize: 40,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
-                
+                fontFamily: 'Nothing_Font',
               ),
+            ),
+          ),
+          Positioned(
+            bottom: 50,
+            right: 20,
+            child: ElevatedButton(
+              onPressed: () {
+                controller.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+              },
+              child: Text('   Next  '),
             ),
           ),
         ],
