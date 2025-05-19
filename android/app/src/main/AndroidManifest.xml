@@ -1,17 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.your.package.name">
-
-    <!-- Required for Android 13+ -->
-    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
-
-    <!-- Required for Android 12 and below -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    package="com.example.old_wave">
 
     <application
         android:name="${applicationName}"
         android:label="old_wave"
         android:icon="@mipmap/ic_launcher"
-        android:requestLegacyExternalStorage="true"> <!-- ✅ FIXED -->
+        > 
 
         <activity
             android:name=".MainActivity"

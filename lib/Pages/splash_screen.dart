@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:old_wave/Pages/landing_page.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,46 +12,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _handlePermissionsAndNavigate();
-  }
-
-  Future<void> _handlePermissionsAndNavigate() async {
-    await Future.delayed(Duration(milliseconds: 500)); // brief splash wait
-
-    if (Platform.isAndroid) {
-      // Android 13+ → use READ_MEDIA_AUDIO
-      if (await _isAndroid13OrAbove()) {
-        var audioStatus = await Permission.audio.request();
-        print('Audio permission: $audioStatus');
-
-        if (!audioStatus.isGranted) {
-          await openAppSettings();
-          return;
-        }
-      } else {
-        // Android 12 or below → use storage permission
-        var storageStatus = await Permission.storage.request();
-        print('Storage permission: $storageStatus');
-
-        if (!storageStatus.isGranted) {
-          await openAppSettings();
-          return;
-        }
-      }
-    }
-
-    // Wait and move to next page
-    await Future.delayed(Duration(seconds: 2));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LandingPage()),
-    );
-  }
-
-  Future<bool> _isAndroid13OrAbove() async {
-    // Workaround using PlatformVersion
-    var version = (await Permission.mediaLibrary.status);
-    return version != PermissionStatus.denied; // crude check
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LandingPage()),
+      );
+    });
   }
 
   @override

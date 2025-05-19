@@ -7,8 +7,8 @@ plugins {
 
 android {
     namespace = "com.example.old_wave"
-    compileSdk = property("flutter.compileSdkVersion") as Int
-    ndkVersion = property("flutter.ndkVersion") as String
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -20,16 +20,20 @@ android {
     }
 
     defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.old_wave"
-        minSdk = property("flutter.minSdkVersion") as Int
-        targetSdk = property("flutter.targetSdkVersion") as Int
-        versionCode = property("flutter.versionCode") as Int
-        versionName = property("flutter.versionName") as String
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
     }
 
     buildTypes {
-        getByName("release") {
-            // Signing with debug keys for now so `flutter run --release` works.
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
