@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:old_wave/Pages/home_page.dart';
 
 class PageThreee extends StatelessWidget {
@@ -26,7 +25,7 @@ class PageThreee extends StatelessWidget {
 
             child: Text(
               'TO PAUSE,',
-              style:  TextStyle(
+              style: TextStyle(
                 fontSize: 65,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
@@ -39,7 +38,7 @@ class PageThreee extends StatelessWidget {
             left: 20,
             child: Text(
               'TO LISTEN,',
-              style:  TextStyle(
+              style: TextStyle(
                 fontSize: 65,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
@@ -52,7 +51,7 @@ class PageThreee extends StatelessWidget {
             left: 20,
             child: Text(
               'TO BEGIN AGAIN,',
-              style:  TextStyle(
+              style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
@@ -64,9 +63,8 @@ class PageThreee extends StatelessWidget {
             bottom: 100,
             right: 40,
             child: ElevatedButton(
-              
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => HomePage()),
                 );
