@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:old_wave/Pages/audioLibrary.dart';
 import 'package:old_wave/Pages/items/container.dart';
+import 'package:old_wave/Pages/likedsongs.dart';
 import 'package:old_wave/Pages/searchpage.dart';
 import 'package:old_wave/Pages/settings.dart';
 
@@ -45,8 +47,26 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
                     children: [
-                      containerNothing('assets/favourites.png'),
-                      containerNothing('assets/music.png'),
+                      GestureDetector(
+                        child: containerNothing('assets/favourites.png'),
+                        onTap:
+                            () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Likedsongs(),
+                              ),
+                            ),
+                      ),
+                      GestureDetector(
+                        child: containerNothing('assets/music.png'),
+                        onTap:
+                            () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Audiolibrary(),
+                              ),
+                            ),
+                      ),
                     ],
                   ),
                 ),
@@ -84,6 +104,13 @@ class HomePage extends StatelessWidget {
               height: 90,
               decoration: BoxDecoration(
                 color: Colors.black,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey[800]!,
+                    blurRadius: 20,
+                    spreadRadius: 5,
+                  ),
+                ],
                 borderRadius: BorderRadius.circular(25),
               ),
 
@@ -92,7 +119,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pop(
                         context,
                         MaterialPageRoute(builder: (context) => HomePage()),
                       );
