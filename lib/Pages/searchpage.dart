@@ -31,6 +31,14 @@ class _SearchpageState extends State<Searchpage> {
             left: 10,
             right: 10,
             child: Container(
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(color: Colors.grey[800]!, blurRadius: 10),
+                ],
+              ),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -43,14 +51,6 @@ class _SearchpageState extends State<Searchpage> {
                     ),
                   ),
                 ),
-              ),
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(color: Colors.grey[800]!, blurRadius: 10),
-                ],
               ),
             ),
           ),

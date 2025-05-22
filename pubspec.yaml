@@ -35,12 +35,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   permission_handler: ^12.0.0+1
-  on_audio_query: ^2.9.0
+ 
   flutter_media_metadata: ^1.0.0+1
   path_provider: ^2.1.5
+  just_audio: ^0.10.3
+  audio_service: ^0.18.18
+  transparent_image: ^2.0.1
+  
+  file_picker: ^10.1.9
    
  
-  
   
   
  
