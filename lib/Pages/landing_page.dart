@@ -17,15 +17,14 @@ class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
     super.initState();
-    requestStoragePermission();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      requestStoragePermission();
+    });
   }
 
   Future<void> requestStoragePermission() async {
     if (await Permission.audio.isDenied) {
       await Permission.audio.request();
-    }
-    if (await Permission.storage.isDenied) {
-      await Permission.storage.request();
     }
   }
 
