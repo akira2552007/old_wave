@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:old_wave/Pages/audioLibrary.dart';
+import 'package:old_wave/Pages/music_main_screen_player.dart';
 import 'package:path/path.dart' as p;
 
 class Searchpage extends StatefulWidget {
@@ -159,7 +160,14 @@ class _SearchpageState extends State<Searchpage> {
                           color: Colors.grey[500],
                         ),
                         onTap: () => playAudio(audio.path),
-                        onLongPress: () => _player.stop(),
+
+                        onLongPress:
+                            () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MusicMainScreenPlayer(),
+                              ),
+                            ),
                       ),
                     );
                   } else {
