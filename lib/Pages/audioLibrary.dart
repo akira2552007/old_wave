@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:old_wave/Pages/music_main_screen_player.dart';
 import 'package:path/path.dart' as p;
 
 class Audiolibrary extends StatefulWidget {
@@ -42,7 +44,7 @@ class _AudiolibraryState extends State<Audiolibrary> {
                 path: file.path,
                 title: metaData.trackName ?? p.basename(file.path),
                 artist: metaData.albumArtistName ?? 'Unknown Artist',
-                
+                albumart: metaData.albumArt ?? Uint8List(0),
               ),
             );
           }
@@ -101,6 +103,7 @@ class _AudiolibraryState extends State<Audiolibrary> {
                   child: ListTile(
                     title: Text(
                       audio.title,
+
                       style: TextStyle(color: Colors.white),
                     ),
                     subtitle: Text(
@@ -110,8 +113,15 @@ class _AudiolibraryState extends State<Audiolibrary> {
                     leading: Icon(Icons.music_note, color: Colors.white),
                     onTap: () => playAudio(audio.path),
 
-                  
-                    onLongPress: () => _player.stop(),
+                    onLongPress:
+                        () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                    MusicMainScreenPlayer(audioFile: audio),
+                          ),
+                        ),
                   ),
                 );
               }, childCount: audioFiles.length),
@@ -127,6 +137,12 @@ class AudioFile {
   final String path;
   final String title;
   final String artist;
+  final Uint8List albumart;
 
-  AudioFile({required this.path, required this.title, required this.artist});
+  AudioFile({
+    required this.path,
+    required this.title,
+    required this.artist,
+    required this.albumart,
+  });
 }

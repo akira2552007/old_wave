@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
@@ -18,6 +19,7 @@ class _SearchpageState extends State<Searchpage> {
   final AudioPlayer _player = AudioPlayer();
   List<AudioFile> audioFiles = [];
   final TextEditingController _controller = TextEditingController();
+  @override
   void initState() {
     super.initState();
     scanForAudio();
@@ -40,10 +42,11 @@ class _SearchpageState extends State<Searchpage> {
           if (file is File && file.path.endsWith('.mp3')) {
             final metaData = await MetadataRetriever.fromFile(file);
             foundFiles.add(
-              AudioFile(
+                AudioFile(
                 path: file.path,
                 title: metaData.trackName ?? p.basename(file.path),
                 artist: metaData.albumArtistName ?? 'Unknown Artist',
+                albumart: metaData.albumArt ?? Uint8List(0),
               ),
             );
           }
@@ -165,7 +168,9 @@ class _SearchpageState extends State<Searchpage> {
                             () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MusicMainScreenPlayer(),
+                builder: (context) => MusicMainScreenPlayer(
+                  audioFile: audio,
+                ),
                               ),
                             ),
                       ),
